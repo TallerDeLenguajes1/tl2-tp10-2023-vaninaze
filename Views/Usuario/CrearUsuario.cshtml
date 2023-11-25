@@ -1,0 +1,13 @@
+@using EspacioTablero
+@model Usuario
+
+<main>
+    <h1>Crear Usuario</h1>
+    <form asp-controller="Usuario" asp-action="CrearUsuario">
+        <div class="form-group">
+            <label asp-for="@Model.Nombre_de_usuario" class="form-label text-center">Nombre de Usuario</label>
+            <input type="text" class="form-control" asp-for="@Model.Nombre_de_usuario" aria-describedby="emailHelp" placeholder="Nombre de usuario" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</main>

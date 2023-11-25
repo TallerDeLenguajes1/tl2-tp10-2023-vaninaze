@@ -1,0 +1,24 @@
+@{
+    ViewData["Title"] = "Tablero";    
+}
+@using EspacioTablero
+@model Tablero
+
+<div class="text-center">
+    <h1 class="display-4">Tablero</h1>
+    <form asp-controller="Tablero" asp-action="CrearTablero">
+    <div class="form-group">
+        <label asp-for="@Model.Id_usuario_propietario"></label>
+        <input asp-for="@Model.Id_usuario_propietario" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Nombre"></label>
+        <input asp-for="@Model.Nombre" class="form-control"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="@Model.Descripcion"></label>
+        <input asp-for="@Model.Descripcion" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>    
+</form>
+</div>
