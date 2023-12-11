@@ -2,21 +2,29 @@
     ViewData["Title"] = "Agregar Tarea";    
 }
 @using EspacioTablero
-@model Tarea
+@using tl2_tp10_2023_vaninaze.ViewModels
+@model TareaCrearView
 
 <div class="text-center">
     <h1 class="display-4">Tarea</h1>
     <form asp-controller="Tarea" asp-action="CrearTarea">
-    <div class="form-group">
-        <label asp-for="@Model.Id_tablero"></label>
-        <input asp-for="@Model.Id_tablero" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Nombre"></label>
-        <input asp-for="@Model.Nombre" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Estado"></label>
+        <div class="form-group">
+            <label asp-for="@Model.Id_tablero">Tablero: </label>
+            <select class="form-select" asp-for="@Model.Id_tablero">
+                <option selected value="0">Sin Tablero</option>
+                @foreach(var tablero in Model.Tableros){
+                    <option value="@tablero.Id">@tablero.Nombre</option>
+                }
+            </select>
+            <span asp-validation-for="@Model.Id_tablero" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Nombre">Nombre:</label>
+            <input asp-for="@Model.Nombre" class="form-control"/>
+            <span asp-validation-for="@Model.Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Estado">Estado:</label>
                 <select class="form-select" asp-for="@Model.Estado">
                     <option selected value="0">Ideas</option>
                     <option value="1">Hacer</option>
@@ -24,21 +32,28 @@
                     <option value="3">Revisar</option>
                     <option value="4">Terminada</option>
                 </select>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Descripcion"></label>
-        <input asp-for="@Model.Descripcion" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Color">Color:</label>
+            <span asp-validation-for="@Model.Estado" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Descripcion">Descripcion:</label>
+            <input asp-for="@Model.Descripcion" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Color">Color:</label>
             <input type="color" class="form-control" id="Color" name="Color" value="#ff0000" onchange="GuardarColor()">
             <input type="text" class="form-control" id="stringColor" name="Color" readonly hidden>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Id_usuario_asignado"></label>
-        <input asp-for="@Model.Id_usuario_asignado" class="form-control"/>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>    
+        </div>
+        <input hidden asp-for="@Model.Id_usuario_asignado" value="@Model.Usuario.Id">
+        @*<div class="form-group">
+                <label asp-for="@Model.Id_usuario_asignado">Usuario Asignado: </label>
+                <select class="form-select" asp-for="@Model.Id_usuario_asignado">
+                    <option selected value="0">Sin Asignar</option>
+                    @foreach(var usuario in Model.Usuarios){
+                        <option value="@usuario.Id">@usuario.Nombre_de_usuario</option>
+                    }
+                </select>
+        </div>*@
+        <button type="submit" class="btn btn-primary">Enviar</button>    
 </form>
 </div>
 <script>
@@ -49,3 +64,4 @@
         stringColor.value = Color.value;
     }
 </script>
+@section Scripts{<partial name="_ValidationScriptsPartial"/>}

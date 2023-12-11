@@ -2,23 +2,34 @@
     ViewData["Title"] = "Tablero";    
 }
 @using EspacioTablero
-@model Tablero
+@using tl2_tp10_2023_vaninaze.ViewModels
+@model TableroCrearView
 
 <div class="text-center">
     <h1 class="display-4">Tablero</h1>
     <form asp-controller="Tablero" asp-action="CrearTablero">
-    <div class="form-group">
-        <label asp-for="@Model.Id_usuario_propietario"></label>
-        <input asp-for="@Model.Id_usuario_propietario" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Nombre"></label>
-        <input asp-for="@Model.Nombre" class="form-control"/>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.Descripcion"></label>
-        <input asp-for="@Model.Descripcion" class="form-control"/>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>    
-</form>
+        <input hidden asp-for="@Model.Id_usuario_propietario" value="@Model.Usuario.Id">
+        @*<div class="form-group">
+                <label asp-for="@Model.Id_usuario_propietario">Usuario propietario:</label>
+                <select class="form-select" asp-for="@Model.Id_usuario_propietario">
+                    <option selected value="0">Sin Propietario</option>
+                    @foreach (var u in Model.Usuarios){
+                        <option value="@u.Id">@u.Nombre_de_usuario</option>
+                    }
+                </select>
+                <span asp-validation-for="@Model.Id_usuario_propietario"class="text-danger"></span>
+        </div>*@
+
+        <div class="form-group">
+            <label asp-for="@Model.Nombre"></label>
+            <input asp-for="@Model.Nombre" class="form-control"/>
+            <span asp-validation-for="@Model.Nombre" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.Descripcion"></label>
+            <input asp-for="@Model.Descripcion" class="form-control"/>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>    
+    </form>
 </div>
+@section Scripts{<partial name="_ValidationScriptsPartial"/>}

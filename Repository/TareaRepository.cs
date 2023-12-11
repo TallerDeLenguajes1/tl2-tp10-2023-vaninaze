@@ -12,7 +12,7 @@ namespace kanbanRespository
         private string cadenaConexion = "Data Source=DB/kanban.db;Cache=Shared";
 
         //CREAR Tarea
-        public void Create(int idTablero, Tarea tarea)
+        public void Create(Tarea tarea)
         {
             var query = $"INSERT INTO tarea (id_tablero, nombre, estado, descripcion, color, id_usuario_asignado) VALUES (@id_tab, @nombre, @estado, @descrip, @color, @id_usu);";
             using (SQLiteConnection connection = new SQLiteConnection(cadenaConexion))
@@ -34,7 +34,7 @@ namespace kanbanRespository
         public void Update(int id, Tarea tarea){
             using(SQLiteConnection connection = new SQLiteConnection(cadenaConexion)){
                 SQLiteCommand command = connection.CreateCommand();
-                command.CommandText = @"UPDATE Tarea SET id_tablero = @id_tablero, nombre = @nombre, estado = @estado, descripcion = @descripcion, color = @color, id_usuario_asignado = @id_usuario WHERE id = @idTarea;";
+                command.CommandText = @"UPDATE tarea SET id_tablero = @id_tablero, nombre = @nombre, estado = @estado, descripcion = @descripcion, color = @color, id_usuario_asignado = @id_usuario WHERE id = @idTarea;";
                 command.Parameters.Add(new SQLiteParameter("@id_tablero", tarea.Id_tablero));
                 command.Parameters.Add(new SQLiteParameter("@nombre", tarea.Nombre));
                 command.Parameters.Add(new SQLiteParameter("@estado", tarea.Estado));
@@ -46,16 +46,6 @@ namespace kanbanRespository
                 command.ExecuteNonQuery();
                 connection.Close();
             }
-        }
-        //Modificar Tarea
-        public void UpdateName(int id, string nombre)
-        {
-            SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
-            SQLiteCommand command = connection.CreateCommand();
-            command.CommandText = $"UPDATE tarea SET nombre = '{nombre}' WHERE id = '{id}';";
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
         }
         public void UpdateEstado(int id, Estado estado)
         {
@@ -176,7 +166,6 @@ namespace kanbanRespository
             SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
             var tarea = new Tarea();
             SQLiteCommand command = connection.CreateCommand();
-         //   command.CommandText = $"SELECT * FROM Tablero WHERE id_usuario_propietario = '{idUsuario}';";
             command.CommandText = $"SELECT * FROM tarea WHERE id = '{id}';";
             command.Parameters.Add(new SQLiteParameter("@id", id));
             connection.Open();
@@ -194,7 +183,9 @@ namespace kanbanRespository
                 }
             }
             connection.Close();
-
+            if(tarea == null){
+                throw new Exception("Tarea no encontrada.");
+            }
             return (tarea);
         }
 
@@ -211,12 +202,17 @@ namespace kanbanRespository
         //Eliminar una tarea por ID
         public void Remove(int id)
         {
-            SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
-            SQLiteCommand command = connection.CreateCommand();
-            command.CommandText = $"DELETE FROM tarea WHERE id = '{id}';";
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
+            Tarea tarea = GetById(id);
+            if(tarea == null){
+                throw new Exception("Tarea no borrada.");
+            } else {
+                SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandText = $"DELETE FROM tarea WHERE id = '{id}';";
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
     }
 }

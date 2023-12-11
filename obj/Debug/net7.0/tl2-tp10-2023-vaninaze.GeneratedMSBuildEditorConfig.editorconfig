@@ -9,73 +9,81 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = tl2_tp10_2023_vaninaze
 build_property.RootNamespace = tl2_tp10_2023_vaninaze
-build_property.ProjectDir = C:\tl2-tp10-2023-vaninaze\
+build_property.ProjectDir = C:\tp11-taller2-SESION\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\tl2-tp10-2023-vaninaze
+build_property.MSBuildProjectDirectory = C:\tp11-taller2-SESION
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Home/Index.cshtml]
+[C:/tp11-taller2-SESION/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Home/Privacy.cshtml]
+[C:/tp11-taller2-SESION/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Shared/Error.cshtml]
+[C:/tp11-taller2-SESION/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tp11-taller2-SESION/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/tp11-taller2-SESION/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Tablero/CrearTablero.cshtml]
+[C:/tp11-taller2-SESION/Views/Tablero/CrearTablero.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGVyb1xDcmVhclRhYmxlcm8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Tablero/Index.cshtml]
+[C:/tp11-taller2-SESION/Views/Tablero/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGVyb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Tablero/ModificarTablero.cshtml]
+[C:/tp11-taller2-SESION/Views/Tablero/ModificarTablero.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFibGVyb1xNb2RpZmljYXJUYWJsZXJvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Tarea/CrearTarea.cshtml]
+[C:/tp11-taller2-SESION/Views/Tarea/CrearTarea.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcQ3JlYXJUYXJlYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Tarea/Index.cshtml]
+[C:/tp11-taller2-SESION/Views/Tarea/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Tarea/ModificarTarea.cshtml]
+[C:/tp11-taller2-SESION/Views/Tarea/ModificarTarea.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyZWFcTW9kaWZpY2FyVGFyZWEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Usuario/CrearUsuario.cshtml]
+[C:/tp11-taller2-SESION/Views/Usuario/CrearUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhclVzdWFyaW8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Usuario/Index.cshtml]
+[C:/tp11-taller2-SESION/Views/Usuario/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Usuario/ModificarUsuario.cshtml]
+[C:/tp11-taller2-SESION/Views/Usuario/ModificarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xNb2RpZmljYXJVc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/_ViewImports.cshtml]
+[C:/tp11-taller2-SESION/Views/Usuario/ModificarUsuarioOperador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xNb2RpZmljYXJVc3VhcmlvT3BlcmFkb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/tp11-taller2-SESION/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/_ViewStart.cshtml]
+[C:/tp11-taller2-SESION/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/tl2-tp10-2023-vaninaze/Views/Shared/_Layout.cshtml]
+[C:/tp11-taller2-SESION/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-i2as5nonwk

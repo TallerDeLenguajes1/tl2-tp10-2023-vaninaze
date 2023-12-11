@@ -38,7 +38,6 @@ namespace kanbanRespository
             
             command.ExecuteNonQuery();
             connection.Close();
-
         }
         //LISTAR Tablero
         public List<Tablero> GetAll()
@@ -67,7 +66,7 @@ namespace kanbanRespository
             return tableros;
         }
 
-        //Listar taleros de un usuario especifico
+        //Listar tablero especifico
         public Tablero GetById(int id)
         {
             SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
@@ -87,7 +86,9 @@ namespace kanbanRespository
                 }
             }
             connection.Close();
-
+            if(tablero == null){
+                throw new Exception("Tablero no encontrado.");
+            }
             return (tablero);
         }
         public List<Tablero> GetByIdUsuario(int idUsuario)
@@ -119,12 +120,17 @@ namespace kanbanRespository
         //Eliminar un tablero por ID
         public void Remove(int id)
         {
-            SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
-            SQLiteCommand command = connection.CreateCommand();
-            command.CommandText = $"DELETE FROM tablero WHERE id = '{id}';";
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
+            Tablero tab = GetById(id);
+            if(tab == null){
+                throw new Exception("Tablero no borrado.");
+            } else {
+                SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandText = $"DELETE FROM tablero WHERE id = '{id}';";
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
     }
 }

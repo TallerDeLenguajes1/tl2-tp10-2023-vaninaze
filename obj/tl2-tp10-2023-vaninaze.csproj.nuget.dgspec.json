@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\tl2-tp10-2023-vaninaze\\tl2-tp10-2023-vaninaze.csproj": {}
+    "C:\\tp11-taller2-SESION\\tl2-tp10-2023-vaninaze.csproj": {}
   },
   "projects": {
-    "C:\\tl2-tp10-2023-vaninaze\\tl2-tp10-2023-vaninaze.csproj": {
+    "C:\\tp11-taller2-SESION\\tl2-tp10-2023-vaninaze.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\tl2-tp10-2023-vaninaze\\tl2-tp10-2023-vaninaze.csproj",
+        "projectUniqueName": "C:\\tp11-taller2-SESION\\tl2-tp10-2023-vaninaze.csproj",
         "projectName": "tl2-tp10-2023-vaninaze",
-        "projectPath": "C:\\tl2-tp10-2023-vaninaze\\tl2-tp10-2023-vaninaze.csproj",
+        "projectPath": "C:\\tp11-taller2-SESION\\tl2-tp10-2023-vaninaze.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\tl2-tp10-2023-vaninaze\\obj\\",
+        "outputPath": "C:\\tp11-taller2-SESION\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -39,6 +39,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Session": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "System.Data.SQLite": {
               "target": "Package",
               "version": "[1.0.118, )"

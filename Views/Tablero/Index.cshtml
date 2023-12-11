@@ -2,7 +2,8 @@
     ViewData["Title"] = "Tablero";    
 }
 @using EspacioTablero
-@model List<Tablero>
+@using tl2_tp10_2023_vaninaze.ViewModels
+@model TableroListadoView
 
 <div class="text-center">
     <h1 class="display-4">Tableros</h1>
@@ -10,7 +11,7 @@
         <thead>
             <tr class="table-dark">
                 <th scope="col">ID</th>
-                <th scope="col">ID Propietario</th>
+                <th scope="col">Propietario</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Descrpcion</th>
                 <th scope="col">Modificar</th>
@@ -18,10 +19,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var tablero in Model){
+            @foreach(var tablero in Model.ViewTableros){
                 <tr>
                     <th class="m-auto" scope="row">@tablero.Id</th>
-                    <th class="m-auto" scope="row">@tablero.Id_usuario_propietario</th>
+                    <th class="m-auto" scope="row">@tablero.UsuarioPropietario</th>
                     <td class="m-auto col">@tablero.Nombre</td>
                     <td class="m-auto col-4">@tablero.Descripcion</td>
                     <td>
