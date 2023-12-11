@@ -10,11 +10,11 @@
         <legend>@Model.Id</legend>
         <fieldset>
             <input hidden asp-for="@Model.Id">
-            <div class="mb-3 form-floating">
+            <div class="form-group">
                 <input type="text" class="form-control" asp-for="@Model.Nombre" aria-describedby="emailHelp" placeholder="Nombre de la tarea" required>
                 <label asp-for="@Model.Nombre" class="form-label text-center">Nombre</label>
             </div>
-            <div class="mb-3 form-floating">
+            <div class="form-group">
                 <label asp-for="@Model.Estado">Estado: </label>
                 <select class="form-select" asp-for="@Model.Estado">
                     <option selected value="0">Ideas</option>
@@ -24,11 +24,11 @@
                     <option value="4">Done</option>
                 </select>
             </div>
-            <div class="mb-3 form-floating">
+            <div class="form-group">
                 <input type="text" class="form-control" asp-for="@Model.Descripcion" aria-describedby="emailHelp" placeholder="Descripcion" required>
                 <label asp-for="@Model.Descripcion" class="form-label text-center">Descripcion</label>
             </div>
-            <div class="mb-3 form-floating">
+            <div class="form-group">
                 <label asp-for="@Model.Color">Color:</label>
                 <input type="color" class="form-control" id="Color" name="Color" value="#ff0000" onchange="GuardarColor()">
                 <input type="text" class="form-control" id="stringColor" name="Color" readonly hidden>

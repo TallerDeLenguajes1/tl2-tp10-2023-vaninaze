@@ -88,12 +88,14 @@ namespace kanbanRespository
         //Eliminar un usuario por ID
         public void Remove(int id)
         {
-            SQLiteConnection connection = new SQLiteConnection(cadenaConexion);
-            SQLiteCommand command = connection.CreateCommand();
-            command.CommandText = $"DELETE FROM usuario WHERE id = '{id}';";
-            connection.Open();
-            command.ExecuteNonQuery();
-            connection.Close();
+            using(SQLiteConnection connection = new SQLiteConnection(cadenaConexion)){
+                SQLiteCommand command = connection.CreateCommand();
+                command.CommandText = @"DELETE FROM usuario WHERE id = @idUsuario;";
+                command.Parameters.Add(new SQLiteParameter("@idUsuario",id));
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
         }
     }
 }

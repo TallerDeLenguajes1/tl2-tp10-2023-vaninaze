@@ -14,7 +14,6 @@
                 <th scope="col">Estado</th>
                 <th scope="col">Descrpcion</th>
                 <th scope="col">Color</th>
-                <th scope="col">ID Usuario Asignado</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Borrar</th>
             </tr>
@@ -27,8 +26,9 @@
                     <td class="m-auto col">@tarea.Nombre</td>
                     <td class="m-auto col">@tarea.Estado</td>
                     <td class="m-auto col-4">@tarea.Descripcion</td>
-                    <td class="m-auto col-4">@tarea.Color</td>
-                    <td class="m-auto col-4">@tarea.Id_usuario_asignado</td>
+                    <td class="m-auto col">
+                        <input type="color" asp-for="@tarea.Color" name="colorInput" value="@tarea.Color" disabled>
+                    </td>
                     <td>
                         <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-id="@tarea.Id">Modificar</a>
                     </td>

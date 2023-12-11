@@ -1,17 +1,17 @@
 @{
-    ViewData["Title"] = "Modificar Usuario";    
+    ViewData["Title"] = "Modificar Usuario";
 }
 @using EspacioTablero
 @model Usuario
 
 <main>
-<h1>Modificar Usuario</h1>
-<form asp-controller="Usuario" asp-action="ModificarUsuario">
-    <input hidden asp-for="@Model.Id">
-    <div class="form-group">
-        <input asp-for="@Model.Nombre_de_usuario" class="form-control" /required>
-        <label asp-for="@Model.Nombre_de_usuario">Nombre de usuario</label>
-    </div>
-    <button type="submit">Enviar</button>
-</form>
+    <h1>Modificar Usuario</h1>
+    <form class="w-50 my-2 p-4 border border-3 border-primary rounded-2 border-opacity-25" asp-controller="Usuario" asp-action="ModificarUsuario">
+        <input hidden asp-for="@Model.Id">
+        <div class="form-group">
+            <input asp-for="@Model.Nombre_de_usuario" class="form-control" required>
+            <label asp-for="@Model.Nombre_de_usuario">Nombre de usuario</label>
+        </div>
+        <button type="submit" class="btn  btn-outline-primary">Submit</button>
+    </form>
 </main>

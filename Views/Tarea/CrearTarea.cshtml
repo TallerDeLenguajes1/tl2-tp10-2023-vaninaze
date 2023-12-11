@@ -17,15 +17,22 @@
     </div>
     <div class="form-group">
         <label asp-for="@Model.Estado"></label>
-        <input asp-for="@Model.Estado" class="form-control"/>
+                <select class="form-select" asp-for="@Model.Estado">
+                    <option selected value="0">Ideas</option>
+                    <option value="1">Hacer</option>
+                    <option value="2">Haciendo</option>
+                    <option value="3">Revisar</option>
+                    <option value="4">Terminada</option>
+                </select>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Descripcion"></label>
         <input asp-for="@Model.Descripcion" class="form-control"/>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.Color"></label>
-        <input asp-for="@Model.Color" class="form-control"/>
+        <label asp-for="@Model.Color">Color:</label>
+            <input type="color" class="form-control" id="Color" name="Color" value="#ff0000" onchange="GuardarColor()">
+            <input type="text" class="form-control" id="stringColor" name="Color" readonly hidden>
     </div>
     <div class="form-group">
         <label asp-for="@Model.Id_usuario_asignado"></label>
@@ -34,3 +41,11 @@
     <button type="submit" class="btn btn-primary">Enviar</button>    
 </form>
 </div>
+<script>
+    function GuardarColor() {
+        var Color = document.getElementById('Color');
+        var stringColor = document.getElementById('stringColor');
+
+        stringColor.value = Color.value;
+    }
+</script>

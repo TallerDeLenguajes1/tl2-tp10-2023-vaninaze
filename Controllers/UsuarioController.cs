@@ -45,11 +45,8 @@ public class UsuarioController : Controller
     [HttpGet]
     public IActionResult ModificarUsuario(int id)
     {
-        Usuario usu = usuarioRepo.GetById(id);
-        if(usu != null){
-            usuarioRepo.Update(usu);
-        }
-        return RedirectToAction("Index");
+        Usuario usuario = usuarioRepo.GetById(id);
+        return View(usuario);
     }
     [HttpPost]
     public IActionResult ModificarUsuario(Usuario usuario)
@@ -57,7 +54,6 @@ public class UsuarioController : Controller
         usuarioRepo.Update(usuario);
         return RedirectToAction("Index");
     }
-    [HttpDelete]
     public IActionResult EliminarUsuario(int id){
         usuarioRepo.Remove(id);
         return RedirectToAction("Index");

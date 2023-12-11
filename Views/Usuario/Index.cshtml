@@ -1,37 +1,37 @@
-@using EspacioTablero 
+@using EspacioTablero
 @model List<Usuario>
 @{
     ViewData["Title"] = "Home Page";
 }
 <main class="text-center">
-<h2>Lista Usuarios</h2>
+    <h2>Lista Usuarios</h2>
 
-<table class="table caption-top table-striped table-hover">
-    <thead>
-        <tr class="table-dark">
-            <th scope="col" hidden>ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Modificar</th>
-            <th scope="col">Eliminar</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var usuario in Model)
-        {
-            <tr>
-                <td hidden>@usuario.Id</td>
-                <th class="m-auto" scope="row">@usuario.Nombre_de_usuario</th>
-                <td>
-                    <a asp-controller="Usuario" asp-action="ModificarUsuario" asp-route-id="@usuario.Id">Modificar</a>
-                </td>
-                <td>
-                    <a asp-controller="Usuario" asp-action="EliminarUsuario" asp-route-id="@usuario.Id"
-                        onclick="return confirm('¿Eliminar elemento?')">Eliminar</a>
-                </td>
+    <table class="table caption-top table-striped table-hover">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Modificar</th>
+                <th scope="col">Eliminar</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var usuario in Model)
+            {
+                <tr>
+                    <th class="m-auto" scope="row">@usuario.Id</th>
+                    <th class="m-auto" scope="row">@usuario.Nombre_de_usuario</th>
+                    <td>
+                        <a asp-controller="Usuario" asp-action="ModificarUsuario" asp-route-id="@usuario.Id">Modificar</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Usuario" asp-action="EliminarUsuario" asp-route-id="@usuario.Id" onclick="return confirm('¿Eliminar elemento?')">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<a class="btn btn-outline-success fs-5 py-2 px-4" asp-area="" asp-controller="Usuario" asp-action="CrearUsuario"><i class="bi bi-plus-lg"></i> Agregar Usuario</a>
+    <a class="btn btn-outline-success fs-5 py-2 px-4" asp-area="" asp-controller="Usuario" asp-action="CrearUsuario"><i
+            class="bi bi-plus-lg"></i> Agregar Usuario</a>
 </main>

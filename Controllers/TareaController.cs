@@ -38,7 +38,7 @@ public class TareaController : Controller
     [HttpPost]
     public IActionResult CrearTarea(Tarea tarea)
     {
-        tareaRepo.Create(1,tarea);
+        tareaRepo.Create(1,tarea); //tablero 1
         return RedirectToAction("Index");
     }
     [HttpGet]
