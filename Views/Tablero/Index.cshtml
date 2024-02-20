@@ -1,8 +1,7 @@
 @{
-    ViewData["Title"] = "Tablero";    
+    ViewData["Title"] = "Tableros";    
 }
-@using EspacioTablero
-@using tl2_tp10_2023_vaninaze.ViewModels
+@using EspacioViewModels
 @model TableroListadoView
 
 <div class="text-center">
@@ -10,31 +9,37 @@
     <table class="table caption-top table-striped table-hover">
         <thead>
             <tr class="table-dark">
-                <th scope="col">ID</th>
-                <th scope="col">Propietario</th>
+                <th scope="col">Usuario Propietario</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Descrpcion</th>
+                <th scope="col">Descripcion</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Borrar</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var tablero in Model.ViewTableros){
-                <tr>
-                    <th class="m-auto" scope="row">@tablero.Id</th>
-                    <th class="m-auto" scope="row">@tablero.UsuarioPropietario</th>
-                    <td class="m-auto col">@tablero.Nombre</td>
-                    <td class="m-auto col-4">@tablero.Descripcion</td>
-                    <td>
-                        <a asp-controller="Tablero" asp-action="ModificarTablero" asp-route-id="@tablero.Id">Modificar</a>
-                    </td>
-                    <td>
-                        <a asp-controller="Tablero" asp-action="EliminarTablero" asp-route-id="@tablero.Id"
-                        onclick="return confirm('¿Eliminar elemento?')">Eliminar</a>
-                    </td>
-                </tr>
+            @foreach(var tab in Model.TablerosView){
+                if (tab.Id != 0)
+                {
+                    <tr>
+                        <td class="m-auto">@tab.Usuario</td>
+                        <td class="m-auto">@tab.Nombre</td>
+                        <td class="m-auto">@tab.Descripcion</td>
+                        <td>
+                            @if (Model.Id_sesion == @tab.Id_usuario_propietario) 
+                            {
+                                <a type="button" class="btn btn-outline-dark"  asp-controller="Tablero" asp-action="ModificarTablero" asp-route-id="@tab.Id">Modificar</a>
+                            }
+                        </td>
+                        <td>
+                            @if (Model.Id_sesion == @tab.Id_usuario_propietario) 
+                            {
+                                <a type="button" class="btn btn-outline-danger" asp-controller="Tablero" asp-action="EliminarTablero" asp-route-id="@tab.Id" onclick="return confirm('¿Estas seguro que quieres eliminar a @tab.Nombre?')">Eliminar</a>
+                            }
+                        </td>                 
+                    </tr>
+                }
             }
         </tbody>
     </table>
-    <a class="btn btn-outline-success fs-5 py-2 px-4" asp-area="" asp-controller="Tablero" asp-action="CrearTablero"><i class="bi bi-plus-lg"></i> Crear Tablero</a>
+    <a type="button" class="btn btn-outline-success" asp-area="" asp-controller="Tablero" asp-action="CrearTablero">Crear Tablero</a>
 </div>

@@ -1968,11 +1968,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\tp11-taller2-SESION\\tl2-tp10-2023-vaninaze.csproj",
+      "projectUniqueName": "C:\\tl2-tp10-2023-vaninaze\\tl2-tp10-2023-vaninaze.csproj",
       "projectName": "tl2-tp10-2023-vaninaze",
-      "projectPath": "C:\\tp11-taller2-SESION\\tl2-tp10-2023-vaninaze.csproj",
+      "projectPath": "C:\\tl2-tp10-2023-vaninaze\\tl2-tp10-2023-vaninaze.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "C:\\tp11-taller2-SESION\\obj\\",
+      "outputPath": "C:\\tl2-tp10-2023-vaninaze\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -1981,7 +1981,7 @@
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files\\dotnet\\sdk\\7.0.311\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.313\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2028,7 +2028,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.311\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.313\\RuntimeIdentifierGraph.json"
       }
     }
   }

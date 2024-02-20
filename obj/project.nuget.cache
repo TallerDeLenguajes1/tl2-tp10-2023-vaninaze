@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yaBOUDdb53teg3V+EafWKilaORArdbDD6TDMTOjkAfG0zQtUkZjFGhhXEQEn2RHBso5NFUAG8plyG3nTToxCdw==",
+  "dgSpecHash": "fJ9J/MJJZRJixsjQmO/2KRLkeU9/0bP9eqCF8DKo7pv6vHneh/LOGykZfrqii6+yVnkq/EzXlm2lzYoyM9ax6A==",
   "success": true,
-  "projectFilePath": "C:\\tp11-taller2-SESION\\tl2-tp10-2023-vaninaze.csproj",
+  "projectFilePath": "C:\\tl2-tp10-2023-vaninaze\\tl2-tp10-2023-vaninaze.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\2.2.0\\microsoft.aspnetcore.cryptography.internal.2.2.0.nupkg.sha512",

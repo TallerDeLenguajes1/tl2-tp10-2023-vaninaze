@@ -1,33 +1,39 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using EspacioTablero;
-namespace tl2_tp10_2023_vaninaze.ViewModels
+using EspacioModels;
+
+namespace EspacioViewModels
 {
-    public class UsuarioModificarView{
+    public class UsuarioModificarView
+    {
+        public string MensajeDeError;
+
+        public bool TieneMensajeDeError => !string.IsNullOrEmpty(MensajeDeError);
+        
+        [Display(Name = "Id")]
         public int Id {get;set;}
 
-        [Required (ErrorMessage ="Este campo es requerido")]
-        [StringLength(100)]
-        public string Nombre_de_usuario {get;set;}
-
-        [Required (ErrorMessage ="Este campo es requerido")]
-        [StringLength(50)]
-        public string Rol {get;set;}
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [Display(Name = "Nombre de Usuario")] 
+        public string Nombre_de_usuario {get;set;}        
         
-        [Required (ErrorMessage ="Este campo es requerido")]
-        [StringLength(20)]
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [PasswordPropertyText]
+        [Display(Name = "Pass")]
         public string Pass {get;set;}
 
-        public UsuarioModificarView()
-        {
-        }
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [Display(Name = "Rol")]
+        public Roles Rol {get;set;}
 
-        public UsuarioModificarView(Usuario usuario)
+        public UsuarioModificarView() { }
+
+        public UsuarioModificarView(Usuario usu)
         {
-            Id = usuario.Id;
-            Nombre_de_usuario = usuario.Nombre_de_usuario;
-            Rol = usuario.Rol;
-            Pass = usuario.Pass;
+            Id = usu.Id;
+            Nombre_de_usuario = usu.Nombre_de_usuario;
+            Pass = usu.Pass;
+            Rol = usu.Rol;
         }
-    }    
+    }
 }

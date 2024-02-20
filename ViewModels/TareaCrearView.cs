@@ -1,45 +1,73 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using EspacioTablero;
-namespace tl2_tp10_2023_vaninaze.ViewModels
+using EspacioModels;
+
+namespace EspacioViewModels
 {
-    public class TareaCrearView{
-        [Required (ErrorMessage ="Este campo es requerido")]
-        public int Id_tablero {get;set;}
-    
-        [Required (ErrorMessage ="Este campo es requerido")]
-        [StringLength(100)]
-        public string Nombre {get;set;}
+    public class TareaCrearView
+    {
+        public string MensajeDeError;
+
+        public bool TieneMensajeDeError => !string.IsNullOrEmpty(MensajeDeError);
         
-        [StringLength(200)]
-        public string Descripcion {get;set;}
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [Display(Name = "Id tablero")] 
+        public int Id_tablero {get;set;} 
+
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [StringLength(40, MinimumLength = 4, ErrorMessage = "La longitud de la cadena debe ser entre 4 y 40 caracteres")]
+        [Display(Name = "Nombre")] 
+        public string Nombre {get;set;}  
+
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [Display(Name = "Estado")] 
+        public EstadoTarea Estado {get;set;}        
         
-        [Required (ErrorMessage ="Este campo es requerido")]
-        [StringLength(100)]
-        public string Color {get;set;}
-        
-        [Required (ErrorMessage ="Este campo es requerido")]
-        public Estado Estado {get;set;}
-        
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [StringLength(80, MinimumLength = 4, ErrorMessage = "La longitud de la cadena debe ser entre 4 y 80 caracteres")]
+        [Display(Name = "Descripcion")]
+        public string? Descripcion {get;set;}
+
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [StringLength(8, ErrorMessage = "La longitud de la cadena debe ser de 8 caracteres")]
+        [Display(Name = "Color")]
+        public string? Color {get;set;}
+
+        [Required(ErrorMessage = "Este campo es requerido.")]
+        [Display(Name = "ID Usuario")]
         public int Id_usuario_asignado {get;set;}
         
-        private List<Tablero> tableros;
-        private Usuario usuario;
+        public int Id_sesion {get;set;}
 
-        public List<Tablero> Tableros {get => tableros; set => tableros = value;}
-        public Usuario Usuario {get => usuario; set => usuario = value;}
+        public List<Usuario>? Usuarios {get;set;}
 
-        public TareaCrearView(){}
+        public List<Tablero>? Tableros {get;set;}
 
-        public TareaCrearView(Tarea tarea, List<Tablero> tableros, Usuario usuario){
+        public TareaCrearView() { }
+
+        public TareaCrearView(Tarea tarea, int idUsu, List<Usuario> usuarios, List<Tablero> tableros)
+        {
             Id_tablero = tarea.Id_tablero;
             Nombre = tarea.Nombre;
+            Estado = tarea.Estado;
             Descripcion = tarea.Descripcion;
             Color = tarea.Color;
-            Estado = tarea.Estado;
-            Id_usuario_asignado = tarea.Id;
+            Id_usuario_asignado = tarea.Id_usuario_asignado;
+            Id_sesion = idUsu;
+            Usuarios = usuarios;
             Tableros = tableros;
-            Usuario = usuario;
+        }
+
+        public TareaCrearView(Tarea tarea, int idUsu, List<Tablero> tableros)
+        {
+            Id_tablero = tarea.Id_tablero;
+            Nombre = tarea.Nombre;
+            Estado = tarea.Estado;
+            Descripcion = tarea.Descripcion;
+            Color = tarea.Color;
+            Id_usuario_asignado = tarea.Id_usuario_asignado;
+            Id_sesion = idUsu;
+            Tableros = tableros;
         }
     }
 }

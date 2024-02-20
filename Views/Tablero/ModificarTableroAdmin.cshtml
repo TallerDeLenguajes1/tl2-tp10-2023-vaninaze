@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Modificar Tablero";    
+}
+@using EspacioViewModels
+@model TableroModificarView
+
+@if(Model.TieneMensajeDeError)
+{
+    <p>@Model.MensajeDeError</p>
+}
+<div class="text-center d-flex flex-column align-items-center">
+    <h2 class="text-dark">Modificar Tablero</h2>
+    <form class="w-50 my-2 p-4 border border-3 border-dark rounded-2 border-opacity-25 needs-validation" novalidate="novalidate" asp-controller="Tablero" asp-action="ModificarTablero" method="post">
+        <fieldset>
+            <div class="mb-3">
+                <legend>Tablero: @Model.Nombre</legend>
+                <input hidden asp-for="@Model.Id">
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Id_usuario_propietario" class="form-label text-center">Usuario Propietario</label>
+                    <select class="form-select" aria-label="Default select example" asp-for="@Model.Id_usuario_propietario">
+                        @foreach (var usu in Model.Usuarios){
+                            if(usu.Id != 999){
+                               <option value="@usu.Id">@usu.Nombre_de_usuario</option>
+                            }
+                        }
+                    <span asp-validation-for="@Model.Id_usuario_propietario" class="text-danger"></span>
+                    </select>
+                </div>
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Nombre" class="form-label text-center">Nombre</label>
+                    <input asp-for="@Model.Nombre" class="form-control">
+                    <span asp-validation-for="@Model.Nombre" class="text-danger"></span>
+                </div>
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Descripcion" class="form-label text-center">Descripcion</label>
+                    <input asp-for="@Model.Descripcion" class="form-control">
+                    <span asp-validation-for="@Model.Descripcion" class="text-danger"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info">Enviar</button>
+        </fieldset>
+    </form>
+</div>
+@section Scripts{<partial name="_ValidationScriptsPartial"/>}

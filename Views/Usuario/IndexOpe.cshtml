@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Usuarios";    
+}
+@using EspacioViewModels
+@model UsuarioListadoView
+
+<div class="text-center">
+    <h1 class="display-4">Lista de usuarios</h1>
+    <table class="table caption-top table-striped table-hover">
+        <thead>
+            <tr class="table-dark">
+                <th scope="col">Nombre</th>
+                <th scope="col">Rol</th>
+                <th scope="col">Modificar</th>
+                <th scope="col">Borrar</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var usu in Model.UsuariosView){
+                if (usu.Id != 999)
+                {
+                    <tr>
+                        <td class="m-auto" scope="row">@usu.Nombre_de_usuario</td>
+                        <td class="m-auto" scope="row">@usu.Rol</td>
+                        <td>
+                            @if(Model.Id_sesion == usu.Id){
+                                <a type="button" class="btn btn-outline-dark"  asp-controller="Usuario" asp-action="ModificarUsuario" asp-route-id="@usu.Id">Modificar</a>
+                            }
+                        </td>
+                        <td>
+                            @if(Model.Id_sesion == usu.Id){
+                                <a type="button" class="btn btn-outline-danger"  asp-controller="Usuario" asp-action="EliminarUsuario" asp-route-id="@usu.Id" onclick="return confirm('¿Estas seguro que quieres eliminar a @usu.Nombre_de_usuario?')">Eliminar</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

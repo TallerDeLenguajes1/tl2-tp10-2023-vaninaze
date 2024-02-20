@@ -1,0 +1,67 @@
+@{
+    ViewData["Title"] = "Crear Tarea";    
+}
+@using EspacioViewModels
+@model TareaCrearView
+
+@if(Model.TieneMensajeDeError)
+{
+    <p>@Model.MensajeDeError</p>
+}
+<div class="text-center d-flex flex-column align-items-center">
+    <h1 class="text-dark">Crear Tarea</h1>
+    <form class="w-50 my-2 p-4 border border-3 border-dark rounded-2 border-opacity-25 needs-validation" novalidate="novalidate" asp-controller="Tarea" asp-action="CrearTarea" method="post" >
+        <fieldset>
+            <div class="mb-3">
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Id_tablero" class="form-label text-center">Tablero</label>
+                    <select asp-for="@Model.Id_tablero" class="form-select" aria-label="Default select example">
+                        @foreach(var tab in Model.Tableros){
+                            <option value="@tab.Id" >@tab.Nombre</option>
+                        }
+                    </select>
+                    <span asp-validation-for="@Model.Id_tablero" class="text-danger"></span>
+                </div>
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Nombre" class="form-label text-center">Nombre</label>
+                    <input asp-for="@Model.Nombre" class="form-control" />
+                    <span asp-validation-for="@Model.Nombre" class="text-danger"></span>
+                </div>
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Descripcion" class="form-label text-center">Descripcion</label>
+                    <input asp-for="@Model.Descripcion" class="form-control" />
+                    <span asp-validation-for="@Model.Descripcion" class="text-danger"></span>
+                </div>
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Color" class="form-label text-center">Color:</label>
+                    <input type="color" class="form-control" value="#FFE9E2" name="Color" />
+                    <span asp-validation-for="@Model.Color" class="text-danger"></span>
+                </div>
+                <div class="mb-3 has-validation" class="form-control">
+                    <label asp-for="@Model.Id_usuario_asignado" class="form-label text-center">Usuario</label>
+                    <select class="form-select" aria-label="Default select example" asp-for="@Model.Id_usuario_asignado">
+                        @foreach(var usu in Model.Usuarios){
+                            if(usu.Id == Model.Id_sesion){
+                                <option value="@usu.Id" selected="selected">@usu.Nombre_de_usuario</option>
+                            } else{
+                                <option value="@usu.Id">@usu.Nombre_de_usuario</option>
+                            }
+                        }
+                    </select>
+                </div>
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Estado" class="form-label text-center">Estado</label>
+                    <select class="form-select" aria-label="Default select example" asp-for="@Model.Estado">
+                        <option value="0" selected>Idea</option>
+                        <option value="1">Hacer</option>
+                        <option value="2">Haciendo</option>
+                        <option value="3">Revisar</option>
+                        <option value="4">Terminada</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info">Crear</button>
+        </fieldset>
+    </form>
+</div>
+@section Scripts{<partial name="_ValidationScriptsPartial"/>}

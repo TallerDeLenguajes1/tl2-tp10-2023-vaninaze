@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Modificar Usuario";    
+}
+@using EspacioViewModels
+@model UsuarioModificarView
+
+@if(Model.TieneMensajeDeError)
+{
+    <p>@Model.MensajeDeError</p>
+}
+
+<div class="text-center d-flex flex-column align-items-center">
+    <h2 class="text-dark">Modificar Usuario</h2>
+    <form class="w-50 my-2 p-4 border border-3 border-dark rounded-2 border-opacity-25 needs-validation" novalidate="novalidate" asp-controller="Usuario" asp-action="ModificarUsuario" method="post">
+        <fieldset>
+            <div class="mb-3">
+                <legend>Usuario: @Model.Nombre_de_usuario</legend>
+                <input type="hidden" asp-for="@Model.Id">
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Nombre_de_usuario" class="form-label text-center">Nombre</label>
+                    <input asp-for="@Model.Nombre_de_usuario" class="form-control">
+                    <span asp-validation-for="@Model.Nombre_de_usuario" class="text-danger"></span>
+                </div>
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Pass" class="form-label text-center">Contraseña</label>
+                    <input type="password" arie-describedby="emailHelp" placeholder="Contraseña" asp-for="@Model.Pass" class="form-control">
+                    <span asp-validation-for="@Model.Pass" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="@Model.Rol">
+            </div>
+            <button type="submit" class="btn btn-info">Enviar</button>
+        </fieldset>
+    </form>
+</div>
+@section Scripts{<partial name="_ValidationScriptsPartial"/>}

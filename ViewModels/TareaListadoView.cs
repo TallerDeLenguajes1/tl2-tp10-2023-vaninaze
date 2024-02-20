@@ -1,21 +1,26 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using EspacioTablero;
-namespace tl2_tp10_2023_vaninaze.ViewModels
+using EspacioModels;
+
+namespace EspacioViewModels
 {
-    public class TareaListadoView{
-        private List<TareaView> viewTareas;
+    public class TareaListadoView
+    { 
+        public int Id_sesion {get;set;}
 
-        public List<TareaView> ViewTareas 
-        { get => viewTareas; set => viewTareas = value; }
-
-        public TareaListadoView(List<Tarea> tareas, List<Tablero> tableros, List<Usuario> usuarios){
-            viewTareas = new List<TareaView>();
-            foreach(var tarea in tareas){
-                var usuario = usuarios.FirstOrDefault(u => u.Id == tarea.Id_usuario_asignado);
-                var tablero = tableros.FirstOrDefault(t => t.Id == tarea.Id_tablero);
-                viewTareas.Add(new TareaView(tarea,tablero,usuario));
+        public List<TareaView> TareasView {get;set;}        
+        
+        public TareaListadoView(List<Tarea> tareas, List<Usuario> usuarios, List<Tablero> tableros, int idUsu){
+            TareasView = new List<TareaView>();
+            Id_sesion = idUsu;
+            foreach (var tarea in tareas)
+            {
+                Usuario usuario = usuarios.FirstOrDefault(u => u.Id == tarea.Id_usuario_asignado);
+                Tablero tablero = tableros.FirstOrDefault(t => t.Id == tarea.Id_tablero);
+                var tareaView = new TareaView(tarea, usuario, tablero);
+                
+                TareasView.Add(tareaView);
             }
         }
-    } 
+    }
 }

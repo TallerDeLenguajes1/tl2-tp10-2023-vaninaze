@@ -1,32 +1,36 @@
 @{
-    ViewData["Title"] = "Crear Tablero";    
+    ViewData["Title"] = "Modificar Tablero";    
 }
 @using EspacioViewModels
-@model TableroCrearView
+@model TableroModificarView
 
 @if(Model.TieneMensajeDeError)
 {
     <p>@Model.MensajeDeError</p>
 }
+
 <div class="text-center d-flex flex-column align-items-center">
-    <h1 class="text-dark">Crear Tablero</h1>
-    <form class="w-50 my-2 p-4 border border-3 border-dark rounded-2 border-opacity-25 needs-validation" novalidate="novalidate" asp-controller="Tablero" asp-action="CrearTablero" method="post">
+    <h2 class="text-dark">Modificar Tablero</h2>
+    <form class="w-50 my-2 p-4 border border-3 border-dark rounded-2 border-opacity-25 needs-validation" novalidate="novalidate" asp-controller="Tablero" asp-action="ModificarTablero" method="post">
         <fieldset>
-            <input asp-for="@Model.Id_usuario_propietario" type="hidden" value="@Model.Usuario.Id">
             <div class="mb-3">
+                <legend>Tablero: @Model.Nombre</legend>
+                <input hidden asp-for="@Model.Id">
+                <input hidden asp-for="@Model.Id_usuario_propietario">
+                
                 <div class="mb-3 has-validation">
                     <label asp-for="@Model.Nombre" class="form-label text-center">Nombre</label>
-                    <input asp-for="@Model.Nombre" class="form-control" />
+                    <input asp-for="@Model.Nombre" class="form-control">
                     <span asp-validation-for="@Model.Nombre" class="text-danger"></span>
                 </div>
                 <div class="mb-3 has-validation">
                     <label asp-for="@Model.Descripcion" class="form-label text-center">Descripcion</label>
-                    <input asp-for="@Model.Descripcion" class="form-control" />
+                    <input asp-for="@Model.Descripcion" class="form-control">
                     <span asp-validation-for="@Model.Descripcion" class="text-danger"></span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-info">Crear</button>
-        </fieldset>
+            <button type="submit" class="btn btn-info">Enviar</button>
+        </fieldset> 
     </form>
 </div>
 @section Scripts{<partial name="_ValidationScriptsPartial"/>}

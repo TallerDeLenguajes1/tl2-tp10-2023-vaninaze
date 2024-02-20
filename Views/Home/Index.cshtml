@@ -1,8 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Session
+
+@{
+    ViewData["Title"] = "Inicio";
 }
 
 <div class="text-center">
     <h1 class="display-4">Bienvenido</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="text-center">
+    @if(Context.Session.GetString("usuario") != null && Context.Session.GetString("rol") != null)
+    {
+        <p>Usuario: <strong>@Context.Session.GetString("usuario")</strong> </p>
+        <p>Rol: <strong>@Context.Session.GetString("rol")</strong> </p>
+    } else {
+        <p> <a asp-controller="Login" asp-action="Index" class="btn btn-primary btn-lg" role="button">Iniciar Sesion</a> </p> 
+    }
 </div>

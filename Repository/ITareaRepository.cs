@@ -1,23 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using EspacioModels;
 
-using EspacioTablero;
-
-namespace kanbanRespository
+namespace kanbanRepository
 {
     public interface ITareaRepository
     {
         public void Create(Tarea tarea);
         public void Update(int id, Tarea tarea);
-        /*public void UpdateEstado(int id, Estado estado);*/
         public Tarea GetById(int id);
-        public List<Tarea> ListarDeUsuario(int idUsuario);
-        public List<Tarea> ListarDeTablero(int idTablero);
         public List<Tarea> GetAll();
-        public int GetCantEstado(Estado estado);
-        public void Remove(int id);
-        public void AsignarUsuario (int idUsuario, int idTarea);
+        public List<Tarea> GetByUsuAsignado(int idUsu);
+        public List<Tarea> GetByTablero(int idTablero);
+        public void Delete(int id);
+        public void AsignarTarea(int idUsu, int idTarea);
+        public void DeleteByTablero(int idTab);
+        public void DeleteByUsu(int idUsu);
     }
 }

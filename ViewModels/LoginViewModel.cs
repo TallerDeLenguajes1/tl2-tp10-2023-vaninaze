@@ -1,25 +1,22 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using EspacioTablero;
-namespace tl2_tp10_2023_vaninaze.ViewModels
+
+namespace EspacioViewModels
 {
     public class LoginViewModel
     {
+        public string MensajeDeError;
+
+        public bool TieneMensajeDeError => !string.IsNullOrEmpty(MensajeDeError);
+        
         [Required(ErrorMessage = "Este campo es requerido.")]
+        [StringLength(8)]
         [Display(Name = "Nombre de Usuario")] 
-        public string Nombre {get;set;}        
+        public string Nombre_de_usuario {get;set;}        
         
         [Required(ErrorMessage = "Este campo es requerido.")]
         [PasswordPropertyText]
         [Display(Name = "Contraseña")]
         public string Pass {get;set;}
-
-        public LoginViewModel(Usuario usuario)
-        {
-            Nombre = usuario.Nombre_de_usuario;
-            Pass = usuario.Pass;
-        }
-
-        public LoginViewModel(){}
     }
 }

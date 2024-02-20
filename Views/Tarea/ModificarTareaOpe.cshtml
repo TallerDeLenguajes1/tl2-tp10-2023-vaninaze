@@ -1,0 +1,41 @@
+@{
+    ViewData["Title"] = "Modificar Tarea";    
+}
+@using EspacioViewModels
+@model TareaModificarView
+
+@if(Model.TieneMensajeDeError)
+{
+    <p>@Model.MensajeDeError</p>
+}
+
+<div class="text-center d-flex flex-column align-items-center">
+    <h2 class="text-dark">Modificar Tarea</h2>
+    <form class="w-50 my-2 p-4 border border-3 border-dark rounded-2 border-opacity-25 needs-validation" novalidate="novalidate" asp-controller="Tarea" asp-action="ModificarTarea" method="post">
+        <fieldset>
+            <div class="mb-3">
+                <legend>Tarea: @Model.Nombre-Estado: @Model.Estado</legend>
+                <input type="hidden" asp-for="@Model.Id">
+                <input type="hidden" asp-for="@Model.Id_tablero">
+                <input type="hidden" asp-for="@Model.Nombre">
+                <input type="hidden" asp-for="@Model.Descripcion">
+                <input type="hidden" asp-for="@Model.Color">
+                <input type="hidden" asp-for="@Model.Id_usuario_asignado">
+
+                <div class="mb-3 has-validation">
+                    <label asp-for="@Model.Estado" class="form-label text-center">Estado</label>
+                        <select asp-for="@Model.Estado" class="form-select" aria-label="Default select example">
+                            <option value="Idea" selected>Ideas</option>
+                            <option value="Hacer">Hacer</option>
+                            <option value="Haciendo">Haciendo</option>
+                            <option value="Revisar">Revisar</option>
+                            <option value="Terminada">Terminada</option>
+                        </select>
+                    <span asp-validation-for="@Model.Estado" class="text-danger"></span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-info">Enviar</button>
+        </fieldset>
+    </form>
+</div>
+@section Scripts{<partial name="_ValidationScriptsPartial"/>}

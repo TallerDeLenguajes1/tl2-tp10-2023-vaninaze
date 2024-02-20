@@ -1,47 +1,47 @@
 @{
-    ViewData["Title"] = "Tarea";    
+    ViewData["Title"] = "Tareas";    
 }
-@using EspacioTablero
-@using tl2_tp10_2023_vaninaze.ViewModels
+@using EspacioViewModels
 @model TareaListadoView
+
 <div class="text-center">
     <h1 class="display-4">Tareas</h1>
     <table class="table caption-top table-striped table-hover">
         <thead>
             <tr class="table-dark">
-                <th scope="col">ID</th>
                 <th scope="col">Tablero</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Estado</th>
                 <th scope="col">Descripcion</th>
-                <th scope="col">Color</th>
-                <th scope="col">Usuario Asignado</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Usuario</th>
                 <th scope="col">Modificar</th>
                 <th scope="col">Borrar</th>
             </tr>
         </thead>
         <tbody>
-            @foreach(var tarea in Model.ViewTareas){
-                <tr>
-                    <th class="m-auto" scope="row">@tarea.Id</th>
-                    <th class="m-auto" scope="row">@tarea.NombreTablero</th>
-                    <td class="m-auto col">@tarea.Nombre</td>
-                    <td class="m-auto col">@tarea.Estado</td>
-                    <td class="m-auto col-4">@tarea.Descripcion</td>
-                    <td class="m-auto col">
-                        <input type="color" asp-for="@tarea.Color" name="colorInput" value="@tarea.Color" disabled>
-                    </td>
-                    <td class="m-auto col">@tarea.UsuarioAsignado</td>
-                    <td>
-                        <a asp-controller="Tarea" asp-action="ModificarTarea" asp-route-id="@tarea.Id">Modificar</a>
-                    </td>
-                    <td>
-                        <a asp-controller="Tarea" asp-action="EliminarTarea" asp-route-id="@tarea.Id"
-                        onclick="return confirm('¿Eliminar elemento?')">Eliminar</a>
-                    </td>
-                </tr>
+            @foreach(var tarea in Model.TareasView){
+                if (tarea.Id != 0)
+                {
+                    <tr style="background-color: @tarea.Color;">
+                        <td class="m-auto col-4">@tarea.Tablero</td>
+                        <td class="m-auto">@tarea.Nombre</td>
+                        <td class="m-auto">@tarea.Descripcion</td>
+                        <td class="m-auto">@tarea.Estado</td>                      
+                        <td class="m-auto">@tarea.Usuario</td>
+                        <td>
+                            @if(Model.Id_sesion == tarea.Id_usuario_asignado){
+                                <a type="button" class="btn btn-outline-dark"  asp-controller="Tarea" asp-action="ModificarTarea" asp-route-id="@tarea.Id">Modificar</a>
+                            }
+                        </td>
+                        <td>
+                            @if(Model.Id_sesion == tarea.Id_usuario_asignado){ 
+                                <a type="button" class="btn btn-outline-danger"  asp-controller="Tarea" asp-action="EliminarTarea" asp-route-id="@tarea.Id" onclick="return confirm('¿Estas seguro que quieres eliminar a @tarea.Nombre?')">Eliminar</a>
+                            }
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>
-    <a class="btn btn-outline-success fs-5 py-2 px-4" asp-area="" asp-controller="Tarea" asp-action="CrearTarea"><i class="bi bi-plus-lg"></i> Agregar Tarea</a>
+    <a type="button" class="btn btn-outline-success" asp-area="" asp-controller="Tarea" asp-action="CrearTarea">Crear Tarea</a>
 </div>
