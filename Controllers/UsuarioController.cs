@@ -138,13 +138,13 @@ public class UsuarioController : Controller
             return RedirectToRoute(new { controller = "Login", action = "Index" }); 
         } 
         try {
-            if(isAdmin()){
-                tareaRepo.DeleteByUsu(id);
-                tableroRepo.DeleteByUsu(id);
-                usuarioRepo.Delete(id);
-                return RedirectToAction("Index");
+            tareaRepo.DeleteByUsu(id);
+            tableroRepo.DeleteByUsu(id);
+            usuarioRepo.Delete(id);
+            if(id == HttpContext.Session.GetInt32("id")){
+                return RedirectToRoute(new { controller = "Login", action = "Logout" }); 
             }
-            return RedirectToRoute(new { controller = "Login", action = "Index" }); 
+            return RedirectToAction("Index");
         } catch (Exception ex) {
             _logger.LogError(ex.ToString());
             return BadRequest();
